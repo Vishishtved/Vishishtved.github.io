@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Vishisht Ved, Software Engineer at HSBC Pune: Java, Spring Boot, Python and AWS. Immediate joiner.">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Vishisht Ved</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a request/response hero; work, a live circuit breaker, skills split into "in production" vs "learning", contact. */
+:root{
+  --bg:#F2F4F1; --surface:#FBFCFA; --fg:#14201C; --muted:#56635E; --line:#D5DBD6;
+  --accent:#B9500E; --ok:#1E7A4C; --warn:#A8620B; --bad:#B42E2E;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1412; --surface:#151D1A; --fg:#E4EBE7; --muted:#97A49F; --line:#27322E;
+  --accent:#F08B45; --ok:#4FC387; --warn:#E3A44A; --bad:#EE6D6D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1412; --surface:#151D1A; --fg:#E4EBE7; --muted:#97A49F; --line:#27322E;
+  --accent:#F08B45; --ok:#4FC387; --warn:#E3A44A; --bad:#EE6D6D; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.wrap{max-width:920px;margin:0 auto;padding-block:48px 64px;display:grid;gap:72px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+h2{font-size:clamp(1.5rem,3vw,1.9rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0;max-width:65ch}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.label{font:500 .74rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+section{display:grid;gap:24px}
+.sec-head{display:grid;gap:8px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:start}
+.hero > *{min-width:0}
+.intro{display:grid;gap:18px}
+.intro h1{font-size:clamp(2.6rem,7vw,4.4rem);font-weight:700;letter-spacing:-.02em}
+.role{font-size:1.15rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 .8rem/1 var(--mono);padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.chip.live{border-color:var(--ok);color:var(--ok)}
+.chip.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:7px;vertical-align:1px}
+.links{display:flex;flex-wrap:wrap;gap:18px;font-weight:500}
+
+.resp{font:400 .86rem/1.65 var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.resp-top{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);color:var(--muted);flex-wrap:wrap}
+.resp-top b{color:var(--ok);font-weight:500}
+.resp pre{margin:0;padding:14px;overflow-x:auto;white-space:pre}
+.k{color:var(--accent)} .s{color:var(--fg)} .n{color:var(--ok)} .c{color:var(--muted)}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact{padding:18px 16px;display:grid;gap:4px;border-left:1px solid var(--line)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{font:700 1.9rem/1 var(--display);font-variant-numeric:tabular-nums}
+.fact span{color:var(--muted);font-size:.9rem;line-height:1.35}
+
+/* experience */
+.job{display:grid;grid-template-columns:180px 1fr;gap:24px}
+.job > *{min-width:0}
+.when{font:500 .85rem/1.5 var(--mono);color:var(--muted)}
+.job ul{margin:12px 0 0;padding-left:18px;display:grid;gap:8px}
+.job li::marker{color:var(--accent)}
+.where{color:var(--muted);margin-top:2px}
+.jobs{display:grid;gap:36px}
+
+/* breaker */
+.breaker{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;gap:20px}
+.states{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.st{border:1.5px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;transition:border-color .25s, background .25s}
+.st b{font:500 .85rem/1 var(--mono);letter-spacing:.06em}
+.st span{font-size:.82rem;color:var(--muted);line-height:1.4}
+.st.on[data-s="CLOSED"]{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 10%,transparent)}
+.st.on[data-s="OPEN"]{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.st.on[data-s="HALF_OPEN"]{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 12%,transparent)}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button{font:500 .9rem/1 var(--body);padding:10px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+button:hover{border-color:var(--fg)}
+button.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.meter{font:400 .85rem/1 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.log{font:400 .8rem/1.6 var(--mono);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;height:150px;overflow-y:auto;margin:0;list-style:none}
+.log li.ok{color:var(--ok)} .log li.bad{color:var(--bad)} .log li.warn{color:var(--warn)} .log li.info{color:var(--muted)}
+
+.story{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{display:grid;gap:6px;align-content:start;padding-top:12px;border-top:2px solid var(--line)}
+.step:last-child{border-top-color:var(--accent)}
+.step p{font-size:.95rem;color:var(--muted)}
+
+/* project */
+.project{display:grid;gap:12px;border-left:2px solid var(--accent);padding-left:18px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:400 .78rem/1 var(--mono);padding:5px 8px;border-radius:5px;background:var(--surface);border:1px solid var(--line)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.skills > *{min-width:0}
+.skill-col{display:grid;gap:14px;align-content:start}
+.skill-row{display:grid;gap:6px}
+.skill-row h4{margin:0;font:600 .9rem/1.3 var(--body)}
+.learning .tag{border-style:dashed;background:transparent}
+.note{font-size:.85rem;color:var(--muted)}
+
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.edu > div{display:grid;gap:6px;align-content:start}
+.edu ul{margin:0;padding-left:18px}
+
+/* contact */
+.contact{display:grid;gap:16px;padding-top:28px;border-top:1px solid var(--line)}
+.c-rows{display:grid;gap:10px}
+.c-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.c-row .label{width:80px}
+.c-row code{font:500 1rem var(--mono);user-select:all}
+.copy{padding:6px 10px;font-size:.8rem}
+footer{color:var(--muted);font-size:.85rem}
+
+@media (max-width:760px){
+  .wrap{gap:56px;padding-block:28px 48px}
+  .hero,.skills,.edu{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--line)}
+  .job{grid-template-columns:1fr;gap:6px}
+  .states,.story{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="intro">
+      <span class="label">Software Engineer · Pune, India</span>
+      <h1>Vishisht Ved</h1>
+      <p class="role">I build and run Java and Spring Boot services for digital banking, live in four countries. I care about the parts users never see: integrations that fail gracefully, releases that don't take anything down, and incidents that stay fixed.</p>
+      <div class="chips">
+        <span class="chip live">Immediate joiner</span>
+        <span class="chip">Open to relocation</span>
+        <span class="chip">HSBC · Accounts Value Stream</span>
+      </div>
+      <div class="links">
+        <a href="https://linkedin.com/in/vishisht-ved" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/Vishishtved" target="_blank" rel="noopener">GitHub</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div class="resp" aria-label="Profile summary written as an API response">
+      <div class="resp-top"><span>GET /engineers/vishisht-ved</span><b>200 OK</b></div>
+<pre><span class="c">{</span>
+  <span class="k">"role"</span>: <span class="s">"Software Engineer, HSBC"</span>,
+  <span class="k">"since"</span>: <span class="s">"2024-07"</span>,
+  <span class="k">"stack"</span>: [<span class="s">"Java 21"</span>, <span class="s">"Spring Boot 3"</span>,
+            <span class="s">"Python"</span>, <span class="s">"AWS Lambda"</span>],
+  <span class="k">"productionApis"</span>: <span class="n">6</span>,
+  <span class="k">"liveMarkets"</span>: [<span class="s">"IN"</span>, <span class="s">"VN"</span>, <span class="s">"MY"</span>, <span class="s">"AE"</span>],
+  <span class="k">"onCall"</span>: <span class="s">"24/7"</span>,
+  <span class="k">"award"</span>: <span class="s">"Circle of Excellence"</span>,
+  <span class="k">"available"</span>: <span class="n">true</span>
+<span class="c">}</span></pre>
+    </div>
+  </header>
+
+  <div class="facts" role="list">
+    <div class="fact" role="listitem"><b>6+</b><span>production APIs owned at HSBC</span></div>
+    <div class="fact" role="listitem"><b>4</b><span>countries where my services are live</span></div>
+    <div class="fact" role="listitem"><b>3</b><span>countries in zero-downtime releases I led</span></div>
+    <div class="fact" role="listitem"><b>8 → 21</b><span>Java versions migrated, with Spring Boot 3</span></div>
+  </div>
+
+  <section id="experience">
+    <div class="sec-head"><span class="label">Experience</span><h2>Where I've worked</h2></div>
+    <div class="jobs">
+      <div class="job">
+        <div class="when">Jul 2024 – Present</div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="where">HSBC · Accounts Value Stream · Pune</div>
+          <ul>
+            <li>Develop and maintain Java 21 / Spring Boot microservices and REST APIs for New-to-Bank and Existing-to-Bank digital onboarding, live in India, Vietnam, Malaysia and the UAE.</li>
+            <li>Write Python scripts for AWS Lambda functions that call REST APIs, working alongside the team's Java services.</li>
+            <li>Delivered the UAE Global Money Accounts launch from QA to go-live and led zero-downtime releases across three countries.</li>
+            <li>Turn loosely defined requirements from product and business teams into designs, API contracts and Confluence documentation in a Scrum squad.</li>
+            <li>Ship through Jenkins CI/CD and Docker with Git pull requests and peer code review; own unit, integration and performance testing.</li>
+            <li>Support live systems on a 24/7 on-call rotation with Splunk and AppDynamics, taking issues through to root cause.</li>
+            <li>Use GitHub Copilot, ChatGPT and Claude to write and review code, tests and documentation, and check every AI output before it ships.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">May 2023 – Jul 2023</div>
+        <div>
+          <h3>Data Analyst Intern</h3>
+          <div class="where">Splisys IT Consultancy · Noida</div>
+          <ul>
+            <li>Cleaned and analysed SAP portal incident data and built dashboards on incident trends and turnaround times.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="breaker">
+    <div class="sec-head">
+      <span class="label">Selected work · Resilience</span>
+      <h2>A circuit breaker that keeps one bad dependency from taking down the rest</h2>
+      <p>I designed and built a reusable circuit breaker for our services, using an explicit State pattern with configurable thresholds. It is now used across services. Try it below: this demo trips after 3 failures and waits 4 seconds before testing the dependency again.</p>
+    </div>
+    <div class="breaker">
+      <div class="states">
+        <div class="st on" data-s="CLOSED"><b>CLOSED</b><span>Requests flow normally. Failures are counted.</span></div>
+        <div class="st" data-s="OPEN"><b>OPEN</b><span>Requests fail fast. The dependency gets time to recover.</span></div>
+        <div class="st" data-s="HALF_OPEN"><b>HALF-OPEN</b><span>One trial request decides: close again, or reopen.</span></div>
+      </div>
+      <div class="controls">
+        <button class="primary" id="send-ok" type="button">Send healthy request</button>
+        <button id="send-fail" type="button">Send failing request</button>
+        <button id="reset" type="button">Reset</button>
+        <span class="meter" id="meter">failures 0 / 3</span>
+      </div>
+      <ol class="log" id="log" aria-live="polite"><li class="info">breaker ready · state CLOSED</li></ol>
+    </div>
+  </section>
+
+  <section id="incident">
+    <div class="sec-head">
+      <span class="label">Selected work · Production</span>
+      <h2>Fixing a 403 so it stays fixed</h2>
+    </div>
+    <div class="story">
+      <div class="step"><span class="label">Symptom</span><h3>Authorization failures</h3><p>A third-party integration started returning HTTP 403 in production.</p></div>
+      <div class="step"><span class="label">Root cause</span><h3>Missing entitlement</h3><p>I traced it to entitlement provisioning that had been missed for the release.</p></div>
+      <div class="step"><span class="label">Prevention</span><h3>Checklist change</h3><p>I added entitlement verification to the release checklist so the gap can't ship again.</p></div>
+    </div>
+  </section>
+
+  <section id="project">
+    <div class="sec-head"><span class="label">Side project · In progress</span><h2>AutoMerge AI</h2></div>
+    <div class="project">
+      <p>A Spring Boot service for detecting and, later, resolving Git merge conflicts. Phase one clones repositories with JGit, runs test merges and reports conflicts through <code>POST /api/git/test-merge</code>. Next, conflicts are parsed into structured objects that an AI (LLM) resolver can work on.</p>
+      <div class="tags"><span class="tag">Java 21</span><span class="tag">Spring Boot 3.5</span><span class="tag">JGit</span><span class="tag">H2</span><span class="tag">REST</span></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><span class="label">Skills</span><h2>What I use, and what I'm learning</h2></div>
+    <div class="skills">
+      <div class="skill-col">
+        <span class="label">In production</span>
+        <div class="skill-row"><h4>Languages</h4><div class="tags"><span class="tag">Java 21 / 17 / 8</span><span class="tag">Python</span><span class="tag">SQL</span></div></div>
+        <div class="skill-row"><h4>Back end</h4><div class="tags"><span class="tag">Spring Boot 3</span><span class="tag">Microservices</span><span class="tag">REST API design</span><span class="tag">Design patterns</span></div></div>
+        <div class="skill-row"><h4>Cloud and delivery</h4><div class="tags"><span class="tag">AWS Lambda</span><span class="tag">Docker</span><span class="tag">Jenkins CI/CD</span><span class="tag">Git</span><span class="tag">Maven</span></div></div>
+        <div class="skill-row"><h4>Data and monitoring</h4><div class="tags"><span class="tag">MySQL</span><span class="tag">H2</span><span class="tag">Splunk</span><span class="tag">AppDynamics</span></div></div>
+        <div class="skill-row"><h4>Ways of working</h4><div class="tags"><span class="tag">Scrum</span><span class="tag">JIRA</span><span class="tag">Confluence</span><span class="tag">Postman</span><span class="tag">AI-assisted development</span></div></div>
+      </div>
+      <div class="skill-col learning">
+        <span class="label">Learning</span>
+        <div class="skill-row"><h4>AI and data</h4><div class="tags"><span class="tag">AI / ML</span><span class="tag">NLP</span><span class="tag">Databricks</span><span class="tag">PySpark</span><span class="tag">LLM integration</span></div></div>
+        <div class="skill-row"><h4>Platform</h4><div class="tags"><span class="tag">Apache Kafka</span><span class="tag">Kubernetes</span><span class="tag">Terraform</span></div></div>
+        <div class="skill-row"><h4>Front end</h4><div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span></div></div>
+        <p class="note">Self-directed study, not yet used in a professional role.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="background">
+    <div class="sec-head"><span class="label">Background</span><h2>Education and recognition</h2></div>
+    <div class="edu">
+      <div>
+        <h3>Bachelor's degree</h3>
+        <div class="where">Kalinga Institute of Industrial Technology (KIIT) · 2020 – 2024</div>
+        <ul>
+          <li>AWS Certified Cloud Practitioner (in progress)</li>
+          <li>Spring Boot Basics (Udemy)</li>
+          <li>Postman Student Expert</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Recognition</h3>
+        <ul>
+          <li>Circle of Excellence award at HSBC for the UAE Global Money Accounts launch</li>
+          <li>Volunteer in HSBC CSR activities</li>
+        </ul>
+        <div class="where">Languages: English, Hindi</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="sec-head"><span class="label">Contact</span><h2>Let's talk</h2><p>I'm available to join immediately and open to relocating.</p></div>
+    <div class="c-rows">
+      <div class="c-row"><span class="label">Email</span><code id="email">vishishtved8@gmail.com</code><button class="copy" type="button" data-copy="email">Copy</button></div>
+      <div class="c-row"><span class="label">Phone</span><code id="phone">+91 7781915809</code><button class="copy" type="button" data-copy="phone">Copy</button></div>
+      <div class="c-row"><span class="label">Profiles</span><a href="https://linkedin.com/in/vishisht-ved" target="_blank" rel="noopener">linkedin.com/in/vishisht-ved</a><a href="https://github.com/Vishishtved" target="_blank" rel="noopener">github.com/Vishishtved</a></div>
+    </div>
+    <footer>Vishisht Ved · Pune, India</footer>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var THRESHOLD=3, COOLDOWN=4000;
+  var state="CLOSED", failures=0, openedAt=0, timer=null;
+  var logEl=document.getElementById("log"), meter=document.getElementById("meter");
+  function log(msg,cls){var li=document.createElement("li");li.className=cls;li.textContent=msg;logEl.appendChild(li);
+    while(logEl.children.length>40)logEl.removeChild(logEl.firstChild);logEl.scrollTop=logEl.scrollHeight;}
+  function setState(s){state=s;document.querySelectorAll(".st").forEach(function(el){el.classList.toggle("on",el.dataset.s===s)});
+    meter.textContent=s==="OPEN"?"cooling down…":"failures "+failures+" / "+THRESHOLD;}
+  function open(){setState("OPEN");openedAt=Date.now();log("threshold reached · state OPEN","bad");
+    clearTimeout(timer);timer=setTimeout(function(){setState("HALF_OPEN");log("cooldown over · state HALF-OPEN, next request is a trial","warn")},COOLDOWN);}
+  function send(healthy){
+    if(state==="OPEN"){var left=Math.max(0,Math.ceil((COOLDOWN-(Date.now()-openedAt))/1000));log("request rejected fast · OPEN, retry in ~"+left+"s","bad");return;}
+    if(state==="HALF_OPEN"){
+      if(healthy){failures=0;setState("CLOSED");log("trial succeeded · 200 · state CLOSED","ok");}
+      else{log("trial failed · 503","bad");open();}
+      return;}
+    if(healthy){failures=0;log("200 OK","ok");setState("CLOSED");}
+    else{failures++;log("503 from dependency · failure "+failures+"/"+THRESHOLD,"warn");
+      if(failures>=THRESHOLD)open();else setState("CLOSED");}
+  }
+  document.getElementById("send-ok").addEventListener("click",function(){send(true)});
+  document.getElementById("send-fail").addEventListener("click",function(){send(false)});
+  document.getElementById("reset").addEventListener("click",function(){clearTimeout(timer);failures=0;setState("CLOSED");logEl.innerHTML="";log("breaker reset · state CLOSED","info")});
+
+  document.querySelectorAll("[data-copy]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var el=document.getElementById(btn.dataset.copy), text=el.textContent;
+      function selectIt(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selected";}
+      try{navigator.clipboard.writeText(text).then(function(){btn.textContent="Copied"},selectIt)}catch(e){selectIt()}
+      setTimeout(function(){btn.textContent="Copy"},1800);
+    });
+  });
+})();
+</script>
+</body>
+</html>
